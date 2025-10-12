@@ -27,8 +27,8 @@ Submission deadline : 21/12/2025
 ## Assessment Problems
 
 #### 🔹Problem 1: Data from yfinance  
-    -  
-    - 
+    -
+    -    
 
 #### 🔹Problem 2: Plotting Data
     -  
