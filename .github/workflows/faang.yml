@@ -1,0 +1,45 @@
+# Adapted from : https://grok.com/share/c2hhcmQtNA_299055a9-79bd-4951-8914-ab0e4050bcfc
+
+name: Run faang.py and push changes
+
+on:
+  workflow_dispatch:     
+  schedule:
+    - cron: "0 6 * * 6"  # runs every Saturday at 06:00 AM ; adapted from from https://crontab.guru/#0_6_*_*_6
+
+permissions: 
+  contents: write        
+
+jobs:
+  run-download:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0     
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x" 
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt || true
+
+      - name: Run faang.py
+        run: |
+            python faang.py
+
+      - name: Commit changes
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions[bot]@github.com"
+          git add -A
+          git diff --quiet --cached ||  git commit -m "Automated update from gaang.py"
+
+      - name: Push changes
+        run: |
+         git push origin HEAD
