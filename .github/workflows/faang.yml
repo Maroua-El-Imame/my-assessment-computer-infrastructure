@@ -40,4 +40,4 @@ jobs:
 
       - name: Push changes
         run: |
-         git push origin HEAD
+          git push origin HEAD
