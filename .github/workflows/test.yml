@@ -5,7 +5,7 @@ name: Run faang.py and push changes
 on:
   workflow_dispatch:     
   schedule:
-    - cron: "7 2 * * 3"  # runs every Saturday at 06:00 AM ; adapted from from https://crontab.guru/#0_6_*_*_6
+    - cron: "12 2 * * 3"  # runs every Saturday at 06:00 AM ; adapted from from https://crontab.guru/#0_6_*_*_6
 
 permissions: 
   contents: write        
